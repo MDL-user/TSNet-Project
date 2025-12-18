@@ -290,7 +290,7 @@ def print_metrics(name, image_acc, patient_acc, cm, report, probas, labels, num_
 # ----------------------------------------------------------------------
 if __name__ == '__main__':
     # 🚨 请检查这些参数是否与您训练时的设置一致
-    data_dir = 'D://data_new'
+    data_dir = 'D://' # Please change this path to your local data directory
     batch_size = 16
     num_classes = 3
     num_epochs = 30  # K-Fold 每个折叠的训练轮数
@@ -445,5 +445,6 @@ if __name__ == '__main__':
     if os.path.exists(CHECKPOINT_FILE):
         os.remove(CHECKPOINT_FILE)
         print(f"--- 训练检查点文件 {CHECKPOINT_FILE} 已删除 ---")
+
 
     print("\n程序执行完毕。")
