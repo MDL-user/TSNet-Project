@@ -13,7 +13,7 @@ class imgDataset(Dataset):
     def __init__(self, transform=None, split='train', fps=16, qt=20):
 
         self.split = split
-        self.root = 'D://data_new/'
+        self.root = 'D://'# Please change this path to your local data directory
         self.transform = transform
         list_id = []
 
@@ -60,7 +60,7 @@ class imgDataset(Dataset):
         self.fnames = list_id
 
         # --- 添加表格数据 (为融合模型准备，Model 2.0 不使用) ---
-        xlsx = pd.read_excel(r'C:\Users\admin\Desktop/data-3.xlsx')
+        xlsx = pd.read_excel(r'C:\Users\admin\data.xlsx')  # Please change this path to your local data directory
         xlsx['性别'] = xlsx['性别'].map({'男': 0, '女': 1}).values
         xlsx['年龄'] = xlsx['年龄'].values / 100.0
         xlsx['白细胞计数（10^9/L）'] = xlsx['白细胞计数（10^9/L）'].values / 10.0
@@ -161,4 +161,5 @@ class imgDataset(Dataset):
         info_tensor = torch.from_numpy(patient_info).reshape(-1).float()
 
         # 返回 (img_tensor, info_tensor, mask_tensor, target, id)
+
         return img_tensor, info_tensor, mask_tensor, target, id
